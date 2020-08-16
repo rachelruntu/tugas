@@ -1,0 +1,135 @@
+<script>
+    alert('selamat datang di toko buah kami ')
+    var menuUtama
+    var kondisimenuutama=true
+    // var apple, grape, orange
+    var namabuah=['apple','grape','orange']
+    var cart=[]
+    var cartbuah=[]
+    var cartharga=[]
+    var cartqty=[]
+    var price=[10000,15000,20000]
+    var stok=[5,7,8]
+
+    const tampilkanbuah=(cartautidak,arr)=>{
+        var output=''
+        for(let i=0;i<arr.length;i++){
+            if(cartautidak){
+                output+=`${i+1}.${cartbuah[i]}:Rp.${cartharga[i]} qty=${cartqty[i]}== ${cartqty[i]*cartharga[i]}\n`
+            }else{
+                output+=`${i+1}.${namabuah[i]}:Rp.${price[i]} stok=${stok[i]}\n`
+            }
+        }
+        return output
+    }
+    const totalharga=()=>{
+        var totalharga=0
+        for(let i=0;i<cartbuah.length;i++){
+            totalharga+=(cartharga[i]*cartqty[i])
+        }
+        return totalharga
+    }
+
+    while(kondisimenuutama){
+        do {
+            menuUtama=prompt('menu utama?\n1.belanja\n2.Tambah buah\n3.edit buah\n4.tampilkan buah\n5.exit')
+            if(!(menuUtama>=1&&menuUtama<6)){
+               alert('ulangin woy')
+            }
+        } while (!(menuUtama>=1&&menuUtama<6));
+        if(menuUtama==1){
+            do {
+                var menubelanja=prompt('1.pilih buah\n2.bayar\n3.tampilkan Cart')
+                var menubelanjakondisi=true
+                if(menubelanja==1){
+                    var pilihanbelanja=prompt(`pilih aja bos:\n${tampilkanbuah(false,namabuah)}`)
+                    var indexcart=-1
+                    for(let j=0;j<cartbuah.length;j++){
+                        if(cartbuah[j]==namabuah[pilihanbelanja-1]){
+                            indexcart=j
+                        }
+                    }
+                    var qty=parseInt(prompt('pengen berapa bos?'))
+                    if(qty>stok[pilihanbelanja-1]){
+                        alert('stokknya nggak cukup bos')
+                    }else{
+                        if(indexcart<0){
+                            cartbuah.push(namabuah[pilihanbelanja-1])
+                            cartharga.push(price[pilihanbelanja-1])
+                            cartqty.push(qty)
+                        }else{
+                           cartqty[indexcart]+=qty 
+                        }
+                        stok[pilihanbelanja-1]-=qty
+                    }
+                }else if(menubelanja==2){
+                    // var totalharga=0
+                    // var output=''
+                    // for(let i=0;i<cartbuah.length;i++){
+                    //     output+=`${i+1}.${cartbuah[i]}:Rp.${cartharga[i]} qty=${cartqty[i]}== ${cartqty[i]*cartharga[i]}\n`
+                    //     totalharga+=(cartharga[i]*cartqty[i])
+                    // }
+                    var bayar=parseInt(prompt(`totalbelanja :\n${tampilkanbuah(true,cartbuah)}\nTotal harga=${totalharga()}`))
+                    if(bayar<totalharga){
+                        alert('miskin anda')
+                    }else if(bayar==totalharga){
+                        alert('terima kasi')
+                    }else{
+                        alert('kembalian anda Rp.'+(bayar-totalharga)+'.00')
+                    }
+                    menubelanjakondisi=confirm('belanja lagi nggak?')
+                    cartharga=[]
+                    cartbuah=[]
+                    cartqty=[]
+                }else{
+                    if(cartbuah.length){
+                        var output=''
+                        for(let i=0;i<cartbuah.length;i++){
+                            output+=`${i+1}.${cartbuah[i]}:Rp.${cartharga[i]} qty=${cartqty[i]}\n`
+                        }
+                        alert(`tampilan cart :\n${output}`)
+                    }else{
+                        alert('belanja dulu karena car kosong')
+                        menubelanjakondisi=confirm('jadi belanja nggak ?')
+                    }
+                }
+            } while (menubelanjakondisi);
+            
+        }else if(menuUtama==2){
+            var namabuahbaru=prompt('masukkan nama buah?')
+            var hargabuahbaru=prompt('masukkan harganya')
+            var stokbaru=prompt('masukkan stoknya')
+            alert(`mau memasukkan buah ${namabuahbaru} dengan harga Rp.${hargabuahbaru}.00 dengan stok ${stokbaru}`)
+            var yakinnggak=confirm('yakin nggak')
+            if(yakinnggak){
+                namabuah.push(namabuahbaru)
+                price.push(hargabuahbaru)
+                stok.push(stokbaru)
+                alert('berhasil')
+            }else{
+                alert('oke deh nggak jadi')
+            }
+        }else if(menuUtama==3){
+            // var output=''
+            // for(let i=0;i<namabuah.length;i++){
+            //     output+=`${i+1}.${namabuah[i]}:Rp.${price[i]} stok=${stok[i]}\n`
+            // }
+            var pilihedit
+            do {
+                pilihedit=prompt(`mau edit yang mana:\n${tampilkanbuah(false,namabuah)}`)
+            } while (!(pilihedit>=1 &&pilihedit<=namabuah.length));
+            var namabuahedit=prompt('ganti buah '+namabuah[pilihedit-1]+' jadi?')
+            var priceedit=prompt('ganti harganya jadi ?')
+            var stokedit=prompt('ganti stok jadim?')
+            namabuah.splice(pilihedit-1,1,namabuahedit)
+            stok.splice(pilihedit-1,1,stokedit)
+            price.splice(pilihedit-1,1,priceedit)
+            alert('berhasil mengedit')
+        }else if(menuUtama==4){
+            alert(`tampilan:\n${tampilkanbuah(false,namabuah)}`)
+        }else{
+            alert('selamat tinggal')
+            kondisimenuutama=false
+        }
+    }
+</script>

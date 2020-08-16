@@ -1,0 +1,103 @@
+<html>
+    <script>
+        var jenisKend = prompt('Jenis Kendaraan:?\n\n1. Mobil\n2. Motor')
+        jenisKend = parseInt(jenisKend) //Untuk menjadikan "string,radix=number"
+
+        var jamMskMbl = prompt('Masuk jam (0-11)')
+        jamMskMbl = parseInt(jamMskMbl)
+
+        var pmAmMskMbl = prompt('AM/PM\n1. AM\n2. PM')
+        pmAmMskMbl = parseInt(pmAmMskMbl)
+
+        var jamKlrMbl = prompt('Keluar jam (0-11)')
+        jamKlrMbl = parseInt(jamKlrMbl)
+
+        var pmAmKlrMbl = prompt('AM/PM\n1. AM\n2. PM')
+        pmAmKlrMbl =  parseInt(pmAmKlrMbl)
+
+
+        if (jenisKend == 1) {//1.Mobil
+            var biayaAwalMbl = 5000 // untuk dua jam  pertama menjadi 5000 per jam
+            if (jamMskMbl === 1 && jamKlrMbl === 1) {
+                var selisih = jamKlrMbl - jamMskMbl 
+                if (selisih === 2) {
+                    var A = 2 * biayaAwalMbl
+                    alert(`Biaya nya ${A}`)
+                } else if (selisih > 2) {
+                    var B = (2 * biayaAwalMbl) + ((selisih - 2) * 3000)
+                    alert(`Biaya nya ${B}`)
+                }
+            } else if (jamMskMbl === 1 && jamKlrMbl === 2) {
+                var selisih2 = ((jamKlrMbl+12) - jamMskMbl)
+                if (selisih2 === 2) {
+                    var C = 2 * biayaAwalMbl
+                    alert(`Biaya nya ${C}`)
+                } else if (selisih2 > 2) {
+                    var D = (2 * biayaAwalMbl) + ((selisih2 - 2) * 3000)
+                    alert(`Biaya nya ${D}`)
+                }
+            } else if (jamMskMbl === 2 && jamKlrMbl === 2) {
+                var selisih3 = jamKlrMbl - jamMskMbl
+                if (selisih3 === 2) {
+                    var E = 2 * biayaAwalMbl
+                    alert(`Biaya nya ${E}`)
+                } else if (selisih3 > 2) {
+                    var F = (2 * biayaAwalMbl) + ((selisih3 - 2) * 3000)
+                    alert(`Biaya nya ${F}`)
+                }
+            } else if (jamMskMbl === 2 && jamKlrMbl === 1) {
+                var selisih4 = (jamKlrMbl+12) - jamMskMbl
+                if (selisih4 === 2) {
+                    var G = 2 * biayaAwalMbl
+                    alert(`Biaya nya ${G}`)
+                } else if (selisih4 > 2) {
+                    var H = (2 * biayaAwalMbl) + ((selisih4 - 2) * 3000)
+                    alert(`Biaya nya ${H}`)
+                }
+            }
+        }
+            
+        
+        if (jenisKend == 2) {//2.Motor
+            var biayaAwalMtr = 3000 // untuk dua jam  pertama menjadi 3000 per jam
+            if (jamMskMtr === 1 && jamKlrMtr === 1) {
+                var selisih = jamKlrMtr - jamMskMtr 
+                if (selisih === 2) {
+                    var I = 2 * biayaAwalMtr
+                    alert(`Biaya nya ${I}`)
+                } else if (selisih > 2) {
+                    var J = (2 * biayaAwalMtr) + ((selisih - 2) * 1000)
+                    alert(`Biaya nya ${J}`)
+                }
+            } else if (jamMskMtr === 1 && jamKlrMtr === 2) {
+                var selisih2 = ((jamKlrMtr+12) - jamMskMtr)
+                if (selisih2 === 2) {
+                    var K = 2 * biayaAwalMtr
+                    alert(`Biaya nya ${K}`)
+                } else if (selisih2 > 2) {
+                    var L = (2 * biayaAwalMtr) + ((selisih2 - 2) * 1000)
+                    alert(`Biaya nya ${L}`)
+                }
+            } else if (jamMskMtr === 2 && jamKlrMtr === 2) {
+                var selisih3 = jamKlrMtr - jamMskMtr
+                if (selisih3 === 2) {
+                    var M = 2 * biayaAwalMtr
+                    alert(`Biaya nya ${M}`)
+                } else if (selisih3 > 2) {
+                    var N = (2 * biayaAwalMtr) + ((selisih3 - 2) * 1000)
+                    alert(`Biaya nya ${N}`)
+                }
+            } else if (jamMskMtr === 2 && jamKlrMtr === 1) {
+                var selisih4 = (jamKlrMtr+12) - jamMskMtr
+                if (selisih4 === 2) {
+                    var O = 2 * biayaAwalMtr
+                    alert(`Biaya nya ${O}`)
+                } else if (selisih4 > 2) {
+                    var P = (2 * biayaAwalMtr) + ((selisih4 - 2) * 1000)
+                    alert(`Biaya nya ${P}`)
+                }
+            }
+        }
+         
+    </script>
+</html>

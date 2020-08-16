@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+    
+    Masukkan angka 1: 
+    <input type="number" name="angka1" id="satu">
+    <br>
+    <br>
+    Masukkan angka 2: 
+    <input type="number" name="angka2" id="dua">
+    <br>
+    <br>
+    <input type="button" onclick="fungsiKu()" value="Pangkatkan!">
+    <p id='output'></p>
+    
+</body>  
+<script>
+
+    const fungsiKu=()=> {
+        var angka = document.getElementById('satu').value
+        var pangkat = document.getElementById('dua').value
+        var hasil = angka ** pangkat
+        return document.getElementById('output').innerHTML = `Hasilnya ${hasil}`;}
+       
+</script>
+</html>

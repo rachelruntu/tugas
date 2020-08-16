@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+
+    Ketik Kalimat:
+    <input type="text" name="angka1" id="satu">
+    <br>
+    <br>
+    Karakter yang dicari:
+    <input type="text" name="angka2" id="dua">
+    <br>
+    <br>
+    <input type="button" onclick="fungsiKu()" value="Cari!">
+    <p id='output'></p>
+    
+</body>
+<script>
+
+    const fungsiKu=()=> {
+        var kalimat = document.getElementById('satu').value
+        var karakter = document.getElementById('dua').value
+        var akhir = 0
+
+        for (let i=0; i<kalimat.length; i++) {
+            if (kalimat[i]==karakter) {
+                akhir++
+            }
+        }
+        document.getElementById('output').innerHTML = `Jumlah ${karakter} sebanyak ${akhir} buah`;}
+       
+</script>
+</html>

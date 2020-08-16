@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+
+    Masukkan angka
+    <input type="number" name="" id="">
+    <br>
+    <br>
+    <input type="button" onclick="fungsiKu()" value="Kuadratkan!">
+
+    <!-- <button onclick="fungsiKu()">Kuadratkan!</button> -->
+    <p id='output'></p>
+    
+</body>
+<script>
+
+    const fungsiKu=()=> {
+        var hasil = (document.getElementsByTagName('input')[0].value)**2   
+        document.getElementById('output').innerHTML = `Hasilnya ${hasil}`;}
+       
+</script>
+</html>   

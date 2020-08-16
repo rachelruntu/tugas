@@ -1,0 +1,152 @@
+<html>
+    <script>
+        alert(`Selamat datang di toko buah kami`)
+        
+        // class Tokobuah {
+        //     constructor()
+        //     menuUtama = (''),
+        //     kondisimenuUtama = true,
+        //     namabuah = ['anggur','apel','jeruk'],
+        //     hargabuah = [10000,15000,20000],
+        //     stokbuah = [10,20,15],
+        //     cartbuah = [],
+        //     cartharga = [],
+        //     cartstok = [],
+        // }
+        
+        var menuUtama
+        var kondisimenuUtama = true
+        var namabuah = ['anggur','apel','jeruk']
+        var hargabuah = [10000,15000,20000]
+        var stokbuah = [10,20,15]
+        var cartbuah = []
+        var cartharga = []
+        var cartstok = []
+        
+        const tampilkanbuah=(cart,arr)=>{
+            var output=''
+            for(let i=0; i<arr.length; i++){
+                if(cart){
+                    output+=`${i+1}.${cartbuah[i]}:Rp.${cartharga[i]} stok=${cartstok[i]}==${cartstok[i]*cartharga[i]}\n`       
+                } else {
+                    output+=`${i+1}.${namabuah[i]}:Rp.${hargabuah[i]} stok=${stokbuah[i]}\n`
+                }
+            }
+            return output
+        }
+        const totalharga=()=>{
+            var totalharga=0
+            for(let i=0;i<cartbuah.length;i++){
+            totalharga+=(cartharga[i]*cartstok[i])
+        }
+            return totalharga
+    }
+
+        while(kondisimenuUtama){
+            do {
+                menuUtama=prompt('Menu Utama\n1.Belanja\n2.Tambah buah\n3.Edit Buah\n4.Tampilkan buah\n5.Exit')
+                if(!(menuUtama>=1&&menuUtama<6)){
+                    alert('Anda salah memasukan angka\nMohon diulang kembali')
+                }
+            } while(!(menuUtama>=1&&menuUtama<6)) 
+            if(menuUtama==1){
+                // Meminta input jumlah quantity
+                // var kondisiapel = true
+                // while(kondisiapel){
+                    //     cartbuah[0] = parseInt(prompt('Masukkan jumlah' + namabuah))
+                do {
+
+                    var menubelanja=prompt('1.pilih buah\n2.bayar\n3.tampilkan cart')
+                    var menubelanjakon=true
+                    if(menubelanja==1){
+                        var pilihanbelanja=prompt(`Pilihan:\n${tampilkanbuah(false,namabuah)}`)
+                        var indexcart=-1
+                        for(let j=0;j<cartbuah.length;j++){
+                            if(cartbuah[j]==namabuah[pilihanbelanja-1]){
+                                indexcart=j
+                            }
+                        } 
+                        
+                        var qty=parseInt(prompt('Berapa banyak?'))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                        if(qty>stokbuah[pilihanbelanja-1]){
+                            alert('stoknya tidak mencukupi')
+                        }else{
+                            if(indexcart<0){
+                                cartbuah.push(namabuah[pilihanbelanja-1])
+                                cartharga.push(hargabuah[pilihanbelanja-1])
+                                cartstok.push(qty)
+                            }else{
+                                cartstok[indexcart]+=qty 
+                            }
+                            stokbuah[pilihanbelanja-1]-=qty
+                       } 
+                       
+                    } else if(menubelanja==2){
+                        
+                        var bayar=parseInt(prompt(`Silahkan masukan uang anda\n Total belanja:\n${tampilkanbuah(true,cartbuah)}\nTotal harga=${totalharga()}`))
+                        if(bayar<totalharga){
+                            alert('Uang anda tidak mencukupi')
+                        } else if(bayar==totalharga){
+                            alert('Terimakasih')
+                        } else{
+                            alert('Kembalian anda Rp.'+(bayar-totalharga)+'.00')
+                        }
+                        menubelanjakon=confirm('belanja lagi nggak?')
+                        cartharga=[]
+                        cartbuah=[]
+                        cartstok=[]
+                    }else{
+                        if(cartbuah.length){ 
+                            var output=''
+                            for(let i=0;i<cartbuah.length;i++){
+                                output+=`${i+1}.${cartbuah[i]}:Rp.${cartharga[i]} stok=${cartstok[i]}\n`
+                            }
+                            alert(`tampilan cart :\n${output}`)
+                        }else{
+                            alert('belanja dulu karena car kosong')
+                            menubelanjakon=confirm('jadi belanja nggak ?')
+                        }
+                    }
+                } while (menubelanjakon);
+        
+                
+            } else if(menuUtama==2){
+                var namaplusbuah=prompt('Masukkan nama buah?')
+                var hargaplusbuah=prompt('Masukkan harganya')
+                var stokbaru=prompt('Masukan stoknya')
+                alert(`Menambah buah ${namaplusbuah} dengan harga Rp.${hargaplusbuah}.00 dengan stok ${stokbaru}`)
+                var setuju=confirm('setuju?')
+                if(setuju){
+                    namabuah.push(namaplusbuah)
+                    hargabuah.push(hargaplusbuah)
+                    stokbuah.push(stokbaru)
+                    alert('berhasil')
+                } else{
+                    alert('tidak jadi')
+                }
+            }
+            else if(menuUtama==3){
+                var pilihedit
+                do {
+                    pilihedit=prompt(`mau edit yang mana\n${tampilkanbuah(false,namabuah)}?`)
+                } while (!(pilihedit>=1 && pilihedit<=namabuah.length));
+                var namabuahedit=prompt('ganti buah'+namabuah[pilihedit-1]+'jadi?')
+                var priceEdit=prompt('ganti harganya')
+                var stokEdit=prompt('ganti stoknya')
+                namabuah.splice(pilihedit-1,1,namabuahedit)
+                stokbuah.splice(pilihedit-1,1,stokEdit)
+                hargabuah.splice(pilihedit-1,1,priceEdit)
+                alert('berhasil mengedit')
+            }
+            else if(menuUtama==4){
+                alert(`tampilan:\n${tampilkanbuah(false,namabuah)}`)
+            }
+            else{
+                alert('selamat tinggal')
+                kondisimenuUtama=false
+            }
+        }
+        
+
+    </script>
+</html>

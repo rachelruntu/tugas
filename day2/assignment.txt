@@ -1,0 +1,50 @@
+// #1
+x=4
+y=3
+z=2
+console.log(Math.pow((x+y*z)/(x*y), z))
+
+// #3
+console.log(Math.sqrt(8))
+
+// #4
+hari=485
+tahun=485/360
+bulan=(485-360)/30
+hari=(485-360)%30
+tahun1=(Math.floor(tahun))
+bulan1=(Math.floor(bulan))
+console.log(`pernyataan dalam bentuk \n ${tahun1} Tahun \n ${bulan1} Bulan \n ${hari} Hari`)
+
+// #5
+andi=4
+budi=10
+ratio=andi+budi
+totalusia=49
+hasil=totalusia/ratio
+usiaA=hasil*andi
+usiaB=hasil*budi
+console.log(usiaA+2,usiaB+2)
+
+// #6
+var Today=('2017, 10, 17')
+var Tommorow=('2017, 10, 18')
+var Yesterday=('2017, 10, 16')
+console.log(`Hari ini tanggal ${Today}
+Besok tanggal ${Tommorow}
+Kemarin tanggal ${Yesterday}`)
+
+// #7
+var x='makanan'
+console.log(x.length)
+
+// #8
+x=120
+a=60
+b=40
+z=x/(a+b)
+xi=9
+m=xi+1
+z=1.2
+console.log('jadi mobil a dan b bertabrakan pada jam' +m)
+

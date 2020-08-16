@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InputManusia</title>
+    <script defer src="./index.js"></script>
+
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <table>
+            <h1>Input Manusia</h1>
+                <td>
+                    Nama: <input type="text" id="namaInput" placeholder="nama"><br><br>
+                    Usia: <input type="number" id="usiaInput" placeholder="usia"><br><br>
+                    Gender: <input type="radio" name="pertama" value="Pria" id="a">Pria<input type="radio" name="pertama" value="Wanita" id="b">Wanita<br><br>
+                    Pekerjaan: <input type="text" id="pekerjaanInput" placeholder="pekerjaan"><br><br>
+                    <button onclick="funSubmit()">SUBMIT</button>
+                </td>
+        </table>
+        <br><br>
+            <button onclick="funClicknama()" >Nama</button>
+            <button onclick="funClickusia()" >Usia</button>
+            <button onclick="funClickgender()" >Gender</button>
+            <button onclick="funClickpekerjaan()" >Pekerjaan</button>
+        <br><br>
+        <table id="idTable">
+            <tr>
+                <td>No.</td>
+                <td>Nama</td>
+                <td>Usia</td>
+                <td>Gender</td>
+                <td>Pekerjaan</td>
+            </tr>
+            <tbody id="render">
+
+            </tbody>
+        </table>
+
+    </center>
+</body>
+</html>

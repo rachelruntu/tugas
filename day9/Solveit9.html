@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+    
+    Masukkan angka 1: 
+    <input type="number" name="angka1" id="satu">
+    <br>
+    <br>
+    Masukkan angka 2: 
+    <input type="number" name="angka2" id="dua">
+    <br>
+    <br>
+    <button onclick="fungsiKu1()" >kali x</button>
+    <button onclick="fungsiKu2()" >bagi :</button>
+    <button onclick="fungsiKu3()" >tambah +</button>
+    <button onclick="fungsiKu4()" >kurang -</button>
+    <br><br>
+    <button onclick="fungsiKu5()" >modulus %</button>
+    <button onclick="fungsiKu6()" >pangkat ^</button>
+    <br><br>
+    <p id='output'></p>
+    
+</body>  
+<script>
+    
+    // var angka1 = document.getElementById('satu').value
+    // var angka2 = document.getElementById('dua').value
+    // var hitung = 0
+
+    const fungsiKu1=()=> {
+        var angka1 = document.getElementById('satu').value
+        var angka2 = document.getElementById('dua').value
+        var hitung = 0
+        hitung+= angka1*angka2
+        document.getElementById('output').innerHTML = `Hasilnya ${hitung}`;}
+    const fungsiKu2=()=> {
+        var angka1 = document.getElementById('satu').value
+        var angka2 = document.getElementById('dua').value
+        var hitung = 0
+        hitung+= angka1/angka2
+        document.getElementById('output').innerHTML = `Hasilnya ${hitung}`;}
+    const fungsiKu3=()=> {
+        var angka1 = parseInt(document.getElementById('satu').value)
+        var angka2 = parseInt(document.getElementById('dua').value)
+        var hitung = 0
+        hitung+= angka1+angka2
+        document.getElementById('output').innerHTML = `Hasilnya ${hitung}`;}
+    const fungsiKu4=()=> {
+        var angka1 = document.getElementById('satu').value
+        var angka2 = document.getElementById('dua').value
+        var hitung = 0
+        hitung+= angka1-angka2
+        document.getElementById('output').innerHTML = `Hasilnya ${hitung}`;}
+    const fungsiKu5=()=> {
+        var angka1 = document.getElementById('satu').value
+        var angka2 = document.getElementById('dua').value
+        var hitung = 0
+        hitung+= angka1%angka2
+        document.getElementById('output').innerHTML = `Hasilnya ${hitung}`;}
+    const fungsiKu6=()=> {
+        var angka1 = document.getElementById('satu').value
+        var angka2 = document.getElementById('dua').value
+        var hitung = 0
+        hitung+= angka1**angka2
+        document.getElementById('output').innerHTML = `Hasilnya ${hitung}`;}
+
+       
+</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loginregister</title>
+</head>
+<body>
+    <center>
+        <h1>Login Register</h1>
+        <p>Username:<input type="text" id="username" placeholder="masukkan nama"></p>
+        <p>Password:<input type="password" id="password" placeholder="masukkan password"></p>
+        <br> <br>
+        <input type="button" value="Register" onclick="">-<input type="button" value="Login" onclick=""></p>
+        <h2></h2>
+        <h2></h2>
+        <p></p>
+        
+        <div id="teks">
+
+        </div>
+        <p><input type="button" value="Logout" onclick=""></p>
+    </center>
+</body>
+<script>
+
+    var datauser=[
+        {id:1,username:'admin',role:'admin',password:'12'},
+        {id:1,username:'rahel',role:'user',password:'12'},
+    ]
+    
+    const Register=()=>{
+        var username=document.getElementById('username').value
+        var password=document.getElementById('password').value
+        var user=datauser.filter((val)=>val.username==username)
+        if(user.length){
+            document.getElementsByTagName('h2')[0]
+        }
+    }
+    var database=[
+        {name:'dino',password:'gggg',role:'admin'},
+        {name:'lino',password:'gggg',role:'user'},  
+    ]
+    
+    var menu=true
+    while(menu){
+        var awal=prompt('1.login\n2.Register')
+        if(awal==1){
+            var inputloginname=prompt('masukkan nama')
+            var inputloginpass=prompt('masukkan password')
+            var user=database.filter((val)=>val.name==inputloginname&&val.password==inputloginpass)
+            console.log(user)
+            if(user.length){
+                alert('selama datang '+user[0].name)
+                menu=false
+            }else{
+                alert('salah input pass/name')
+            }
+        }else{
+            var inputname=prompt('masukkan nama')
+            var inputpassword=prompt('masukkan masukkan pasword')
+            database.push({name:inputname,password:inputpassword,role:'user'})
+        }
+    
+    }
+
+</script>
+</html>
