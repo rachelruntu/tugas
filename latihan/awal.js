@@ -1,4 +1,3 @@
-
 // Init value
 var arrProduct = [
     { id: 1579581080923,category: 'Fast Food' , name: "Noodle", price: 3500, stock : 9},
