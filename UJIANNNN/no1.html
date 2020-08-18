@@ -33,26 +33,26 @@
                     }
                     y+=`<br>`                        
                 }
-                jenisbangunan.push(y)
             }
             
         }else if(jenisbangunan==2){
-            
+            if(ukuran.length>0){
                 let x='';
-            //         for(let i=0; i<ukuran.length; i++) {
-            //             for(let j=ukuran.length; j>i; j--) {
-            //                 x+='*&<nbsp>'    
-            //             }
-            //             x+='<br>'
-            //         }
+                    for(let i=0; i<ukuran.length; i++) {
+                        for(let j=ukuran.length; j>i; j--) {
+                            x+='*&<nbsp>'    
+                        }
+                        x+='<br>'
+                    }
                 
-            //     }  
-            // `
-            // }
-        }
+                }  
+            
+            }
+        
+        
         document.getElementById('muncul').innerHTML=jenisbangunan   
         document.getElementById('segitiga').innerHTML=shapeonclick()
-    }    
+    }   
 
 
 </script>
