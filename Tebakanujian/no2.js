@@ -1,22 +1,19 @@
-//Bahas Soal
-
-//callback
-
 // Init value
-var arrProduct = [  
-    { id: 1579581080923,category: 'Fast Food' , name: "Noodle", price: 3500, stock : 9},
-    { id: 1579581081130,category: 'Electronic' , name: "Headphone", price: 4300000, stock :8 },
-    { id: 1579581081342,category: 'Cloth' , name: "Hoodie", price: 300000, stock :7 },
-    { id: 1579581081577,category: 'Fruit' , name: "Apple", price: 10000, stock :8 }
+var arrProduct = [
+    { id: 1579581080923,category: 'Fast Food' , name: "Noodle", price: 3500, stock : 9, stockbeli:1},
+    { id: 1579581081130,category: 'Electronic' , name: "Headphone", price: 4300000, stock :8, stockbeli:1},
+    { id: 1579581081342,category: 'Cloth' , name: "Hoodie", price: 300000, stock :7, stockbeli:1 },
+    { id: 1579581081577,category: 'Fruit' , name: "Apple", price: 10000, stock :8 , stockbeli:1 }
   ];
   
 // init value
 var arrCategory = ["All", "Fast Food", "Electronic", "Cloth", "Fruit"];
 
+var cart=[]
 var indexdelete=-1
 
-let tampilkanawal=(arr)=>{
-    var outputprod=arr.map((val,index)=>{
+let tampilkanawal=()=>{
+    var outputprod=arrProduct.map((val,index)=>{
         return (
             ` <tr>
                 <td>${val.id}</td>
@@ -24,6 +21,7 @@ let tampilkanawal=(arr)=>{
                 <td>${val.name}</td>
                 <td>${val.price}</td>
                 <td>${val.stock}</td>
+                <td><input type='button' value='buy' onclick='funBuy(${val.id})'/></td>
                 <td><input type='button' value='delete' onclick='fundelete(${index})'/></td>
                 <td><input type='button' value='edit' onclick='funedit(${index})'/></td>
             </tr>`
@@ -69,7 +67,7 @@ let funInputData=()=>{
     document.getElementById("priceInput").value='';
     document.getElementById("categoryInput").value='';
     document.getElementById("stockInput").value='';
-    tampilkanawal()
+    tampilkanawal(arrProduct)
 }
 
 let filter=()=>{
@@ -118,13 +116,11 @@ let funFilterCategory=()=>{
     console.log(category)
     var newarr
     if(category!=='All'){
-        console.log('ass')
         newarr= arrProduct.filter((val)=>{
             return val.category==category&&category!=='All'
         })
     }else{
         newarr= arrProduct
-        console.log('aaa')
     }
     document.getElementById('render').innerHTML=Showfilter(newarr).join('')
 
@@ -204,10 +200,102 @@ function Showfilter(filterarr){
                 <td>${val.name}</td>
                 <td>${val.price}</td>
                 <td>${val.stock}</td>
+                <td><input type='button' value='buy' onclick='funBuy(${val.id})'/></td>
                 <td><input type='button' value='delete' onclick='fundelete(${index})'/></td>
                 <td><input type='button' value='edit' onclick='funedit(${index})'/></td>
             </tr>`
         )
      })
  }
+
+function Tampilkancart(){
+    if(cart.length){
+        var output=cart.map((val,index)=>{
+        return   `<tr>
+                    <td>${val.id}</td>
+                    <td>${val.category}</td>
+                    <td>${val.name}</td>
+                    <td>${val.price}</td>
+                    <td>${val.stockbeli}</td>
+                    <td><input type='button' value='Delete' onclick='deletecart(${val.id})'/></td>
+                    <td><input type='button' value='Edit' onclick='editcart(${val.id})'/></td>
+
+                </tr>`
+        }).join('')
+        return output
+    }else{
+        return ''
+    }
+}
+
+
+function deletecart(id){
+    var indexprod=arrProduct.findIndex((val)=>val.id===id)
+    var indexcart=cart.findIndex((val)=>val.id===id)
+    var stock=cart[indexcart].stockbeli
+    console.log(stock)
+    cart.splice(indexcart,1)
+    arrProduct[indexprod].stock+=stock
+    document.getElementById('cart').innerHTML=Tampilkancart()
+    tampilkanawal(arrProduct)
+}
+
+// function editcart(id){
+//     var 
+// }
+
+let funBuy=(id)=>{
+    var indexplihan=arrProduct.findIndex((val)=>val.id==id)
+    var indexcart=cart.findIndex((val)=>val.id==id)
+    console.log(indexcart)
+    if(indexcart==-1){
+        cart.push({...arrProduct[indexplihan],stockbeli:1})
+    }else{
+        cart[indexcart].stockbeli++
+        
+    }
+    arrProduct[indexplihan].stock-=1
+    tampilkanawal(arrProduct)
+    document.getElementById('cart').innerHTML=Tampilkancart()
+}
+let payment=()=>{
+     var listpayment=cart.map((val)=>{
+         return `<p>${val.id} | ${val.category} | ${val.name} |${val.price}</p>`
+     })
+     var subtotal=0
+     cart.forEach((val)=>{
+         subtotal+=val.price*val.stockbeli
+     })
+     var ppn=subtotal*0.01
+     var total=subtotal+ppn
+     document.getElementById('payment').innerHTML = listpayment.join('')+`<h3> subtotal ${subtotal}</h3>`+`<h3> ppn ${ppn}</h3>`+`<h3>Total ${total}</h3>`
+     document.getElementById('input').innerHTML = `<input type="number" id="membayar">`
+    // </input><button onclick='bayar()'>pay</button>
+    }     
+    
 tampilkanawal(arrProduct)
+
+const totalbayar=()=>{
+    var output=0
+    cart.forEach((val)=>{
+        output+=val.price*val.stockbeli
+    })
+    var ppn=output*0.01
+    var outputbayar=output+ppn
+    return outputbayar
+}
+
+const bayar=()=>{
+    var input=document.getElementById('membayar').value
+    if(input<totalbayar()){
+        alert('Uangnya kurang'+(totalbayar()-input))
+        var jadigak=confirm('mau ulang pembayaran?')
+        if(!jadigak){
+            alert('ok')
+        }
+    }else if(input==totalbayar()){
+        alert('terimakasih')
+    }else{
+        alert('terimakasih, kembaliaannya= '+(input-totalbayar()))
+    }
+}

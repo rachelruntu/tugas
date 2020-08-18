@@ -9,14 +9,14 @@
 //     console.log(i)
 // }
 
-// let x='';
-// for(i=0; i<5; i++) {
-//     for(j=5; j>i; j--) {
-//         x+='*'    
-//     }
-//     x+='\n'
-// }
-// console.log(x)
+let x='';
+for(i=0; i<5; i++) {
+    for(j=5; j>i; j--) {
+        x+='*'    
+    }
+    x+='\n'
+}
+console.log(x)
 // sama dengan console.log('*****\n****\n***\n**\n*')
 
 let y='';

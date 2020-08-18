@@ -133,7 +133,7 @@ let Tampilkancart=()=>{
                         <td>${val.category}</td>
                         <td>${val.name}</td>
                         <td>${val.price}</td>
-                        <td><input type='button' value='delete' onclick=''/></td>
+                          <td><input type='button' value='delete' onclick=''/></td>
                     </tr>`
         }).join('')
     }return output

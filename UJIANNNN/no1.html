@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>no1</title>
+</head>
+<body>
+    <center>
+        <h2>Drawing Tools</h2>
+        <p>1.Persegi</p>
+        <p>2.Segitiga</p>
+        <p>Jenis Bangunan:<br><input type="number" id="jenisbangunan"></p>
+        <p>Ukuran:<br><input type="number" id="ukuran"></p>
+        <p><button id="segitiga" onclick="shapeonclick()">Lihat</button></p>
+        <p id="muncul"></p>
+    </center>
+</body>
+<script>
+
+    function shapeonclick(){
+        
+        var jenisbangunan=document.getElementById('jenisbangunan').value
+        var ukuran=document.getElementById('ukuran').value
+        
+        if(jenisbangunan==1){
+            console.log('ok')
+            if(ukuran.length>0){
+                let y='';
+                for(let i=0; i<ukuran.length; i++) {
+                    for(let j=ukuran.length; j>=1; j--){
+                        y+=`*&<nbsp>`
+                    }
+                    y+=`<br>`                        
+                }
+                jenisbangunan.push(y)
+            }
+            
+        }else if(jenisbangunan==2){
+            
+                let x='';
+            //         for(let i=0; i<ukuran.length; i++) {
+            //             for(let j=ukuran.length; j>i; j--) {
+            //                 x+='*&<nbsp>'    
+            //             }
+            //             x+='<br>'
+            //         }
+                
+            //     }  
+            // `
+            // }
+        }
+        document.getElementById('muncul').innerHTML=jenisbangunan   
+        document.getElementById('segitiga').innerHTML=shapeonclick()
+    }    
+
+
+</script>
+</html>
